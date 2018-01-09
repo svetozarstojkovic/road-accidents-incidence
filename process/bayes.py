@@ -5,7 +5,7 @@ data = []
 target = []
 gnb = nb.GaussianNB()
 
-with open('Kaagle_Upload.csv', 'rb') as f:
+with open('../dataset/dataset.csv', 'rb') as f:
     reader = csv.reader(f)
     for row in reader:
         data.append(row)
@@ -26,7 +26,7 @@ for i in range(len(data)):
         except ValueError:
             data[i][j] = 0
 
-        if(data[i][j]<0):
+        if data[i][j] < 0:
             data[i][j] = 0
 
 print 'converted data to int, and removed negative data'
@@ -34,4 +34,4 @@ print 'converted data to int, and removed negative data'
 y_pred = gnb.fit(data, target).predict(data)
 
 print("Number of mislabeled points out of a total %d points : %d"
-      % (len(data),(target != y_pred).sum()))
+      % (len(data), (target != y_pred).sum()))
