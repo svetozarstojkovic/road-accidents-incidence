@@ -1,5 +1,6 @@
 import csv
 import sklearn.naive_bayes as nb
+from sklearn.metrics import f1_score
 
 data = []
 target = []
@@ -33,5 +34,9 @@ print 'converted data to int, and removed negative data'
 
 y_pred = gnb.fit(data, target).predict(data)
 
-print("Number of mislabeled points out of a total %d points : %d"
-      % (len(data), (target != y_pred).sum()))
+print 'F_score micro: '+str(f1_score(target, y_pred, average='micro'))
+print 'F_score macro: '+str(f1_score(target, y_pred, average='macro'))
+print 'F_score weighted: '+str(f1_score(target, y_pred, average='weighted'))
+
+# print("Number of mislabeled points out of a total %d points : %d"
+#       % (len(data), (target != y_pred).sum()))
