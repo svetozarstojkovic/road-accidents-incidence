@@ -24,7 +24,7 @@ def get_data(location):
         reader = csv.reader(f)
         for row in reader:
             data.append(row)
-    print 'loaded data from csv file'
+    print('loaded data from csv file')
     data = data[1:]
 
     for i in range(len(data)):
@@ -32,7 +32,7 @@ def get_data(location):
         del data[i][30]
         del data[i][0]
 
-    print 'removed columns from data'
+    print('removed columns from data')
 
     for i in range(len(data)):
         for j in range(len(data[i])):
@@ -44,6 +44,6 @@ def get_data(location):
             if data[i][j] < 0:
                 data[i][j] = 0
 
-    print 'converted data to int, and removed negative data'
+    print('converted data to int, and removed negative data')
 
     return data, target

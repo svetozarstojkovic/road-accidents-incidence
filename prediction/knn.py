@@ -1,5 +1,3 @@
-import csv
-
 from sklearn.neighbors import KNeighborsClassifier
 
 from dataset_process.get_data import get_train_data
