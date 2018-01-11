@@ -41,8 +41,8 @@ def get_data(location):
             except ValueError:
                 data[i][j] = 0
 
-            if data[i][j] < 0:
-                data[i][j] = 0
+            # if data[i][j] < 0:
+            #     data[i][j] = 0
 
     print('converted data to int, and removed negative data')
 
