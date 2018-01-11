@@ -1,11 +1,11 @@
-from keras import Sequential, optimizers
-from keras.layers import Dense
 from os.path import isfile
 
+from keras import Sequential, optimizers
+from keras.layers import Dense
 from keras.models import load_model
 
-from dataset_process.get_data import get_train_data, get_test_data, get_evaluation_data
-from evaluation.evaluation import evaluate, evaluate_keras_neural_network, evaluate_neural_network
+from dataset_process.get_data import get_train_data, get_evaluation_data
+from evaluation.evaluation import evaluate_keras_neural_network
 
 
 def learn_nn(model):
@@ -29,7 +29,7 @@ def learn_nn(model):
 
     data, target = get_evaluation_data()
 
-    scores = model.evaluate(data, target)
+    model.evaluate(data, target)
 
     return model
 

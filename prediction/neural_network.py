@@ -1,7 +1,7 @@
 import os.path
 
 import numpy as np
-from nimblenet.activation_functions import sigmoid_function, ReLU_function, tanh_function
+from nimblenet.activation_functions import ReLU_function, tanh_function
 from nimblenet.cost_functions import cross_entropy_cost
 from nimblenet.data_structures import Instance
 from nimblenet.learning_algorithms import scaled_conjugate_gradient
