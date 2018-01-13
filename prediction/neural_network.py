@@ -6,6 +6,7 @@ from nimblenet.cost_functions import cross_entropy_cost
 from nimblenet.data_structures import Instance
 from nimblenet.learning_algorithms import scaled_conjugate_gradient
 from nimblenet.neuralnet import NeuralNet
+from sklearn.preprocessing import normalize
 
 from dataset_process.get_data import get_train_data, get_evaluation_data
 from evaluation.evaluation import evaluate_neural_network
@@ -16,13 +17,22 @@ def initialize_network():
 
     # Train
     data, target = get_train_data()
+
+    data = normalize(data, axis=0, norm='max') * 2 - 1
+    data = (data / data.max(axis=0)) * 2 - 1
+
     train = []
     for i in range(len(data)):
         temp = np.array(data[i], dtype='float64')
         train.append(Instance(temp, [float(target[i])]))
 
+
     # Evaluation
     data, target = get_evaluation_data()
+
+    data = normalize(data, axis=0, norm='max') * 2 - 1
+    data = (data / data.max(axis=0)) * 2 - 1
+
     evaluation = []
     for i in range(len(data)):
         temp = np.array(data[i], dtype='float64')

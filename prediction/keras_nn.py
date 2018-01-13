@@ -3,6 +3,7 @@ from os.path import isfile
 from keras import Sequential, optimizers
 from keras.layers import Dense
 from keras.models import load_model
+from sklearn.preprocessing import normalize
 
 from dataset_process.get_data import get_train_data, get_evaluation_data
 from evaluation.evaluation import evaluate_keras_neural_network
@@ -11,8 +12,11 @@ from evaluation.evaluation import evaluate_keras_neural_network
 def learn_nn(model):
     data, target = get_train_data()
 
+    data = normalize(data, axis=0, norm='max') * 2 - 1
+    data = (data / data.max(axis=0)) * 2 - 1
+
     model = Sequential()
-    model.add(Dense(80, input_dim=68, activation='tanh'))
+    model.add(Dense(80, input_dim=60, activation='tanh'))
     model.add(Dense(70, activation='relu'))
     model.add(Dense(60, activation='tanh'))
     model.add(Dense(50, activation='relu'))
