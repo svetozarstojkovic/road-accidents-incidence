@@ -9,7 +9,7 @@ from dataset_process.get_data import get_train_data, get_evaluation_data
 from evaluation.evaluation import evaluate_keras_neural_network
 
 
-def learn_nn(model):
+def learn_nn():
     data, target = get_train_data()
 
     data = normalize(data, axis=0, norm='max') * 2 - 1
@@ -44,8 +44,7 @@ if isfile('keras_model.h5'):
     print("Loaded model from disk")
 else:
     print("Creating new neural network")
-    nn_model = Sequential()
-    nn_model = learn_nn(nn_model)
+    nn_model = learn_nn()
     nn_model.save('keras_model.h5')
     print("Neural network saved on disk")
 

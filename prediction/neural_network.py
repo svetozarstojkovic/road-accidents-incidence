@@ -26,7 +26,6 @@ def initialize_network():
         temp = np.array(data[i], dtype='float64')
         train.append(Instance(temp, [float(target[i])]))
 
-
     # Evaluation
     data, target = get_evaluation_data()
 

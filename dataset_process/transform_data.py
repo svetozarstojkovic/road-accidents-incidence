@@ -1,7 +1,6 @@
 import csv
 
 import numpy as np
-from sklearn.preprocessing import normalize
 from sklearn.preprocessing import OneHotEncoder
 
 data = []
@@ -67,11 +66,11 @@ for i in range(data.shape[1]):
 
 print '3.5:6 - Removed missing values and replaced with median values'
 
-vehicle_type = data[:,2].reshape(-1,1)
+vehicle_type = data[:, 2].reshape(-1, 1)
 
-onehot_encoder = OneHotEncoder(sparse=False)
-onehot_encoded = onehot_encoder.fit_transform(vehicle_type)
-data = np.concatenate((data,onehot_encoded), axis=1);
+one_hot_encoder = OneHotEncoder(sparse=False)
+one_hot_encoded = one_hot_encoder.fit_transform(vehicle_type)
+data = np.concatenate((data, one_hot_encoded), axis=1)
 data = np.delete(data, 2, 1)
 header = np.delete(header, 2)
 
