@@ -64,17 +64,17 @@ for i in range(data.shape[1]):
     else:
         temp[temp == 'NaN'] = np.median(non_null)
 
-print '3.5:6 - Removed missing values and replaced with median values'
+print '4:6 - Removed missing values and replaced with median values'
 
-vehicle_type = data[:, 2].reshape(-1, 1)
-
-one_hot_encoder = OneHotEncoder(sparse=False)
-one_hot_encoded = one_hot_encoder.fit_transform(vehicle_type)
-data = np.concatenate((data, one_hot_encoded), axis=1)
-data = np.delete(data, 2, 1)
-header = np.delete(header, 2)
-
-print "4:6 - Transformed categorical data"
+# vehicle_type = data[:, 2].reshape(-1, 1)
+#
+# one_hot_encoder = OneHotEncoder(sparse=False)
+# one_hot_encoded = one_hot_encoder.fit_transform(vehicle_type)
+# data = np.concatenate((data, one_hot_encoded), axis=1)
+# data = np.delete(data, 2, 1)
+# header = np.delete(header, 2)
+#
+# print "4:6 - Transformed categorical data"
 
 data = data.astype(np.float)
 data = data.astype(np.int64)

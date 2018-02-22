@@ -9,27 +9,33 @@ def get_whole_dataset():
 
 
 def get_train_data():
-    return get_data('../dataset/train.csv')
+    data, target, header = get_data('../dataset/train.csv')
+    return data, target
 
 
-def get_evaluation_data():
-    return get_data('../dataset/evaluate.csv')
+def get_validation_data():
+    data, target, header = get_data('../dataset/validate.csv')
+    return data, target
 
 
 def get_test_data():
-    return get_data('../dataset/test.csv')
+    data, target, header = get_data('../dataset/test.csv')
+    return data, target
 
 
 def get_data(location):
     t1 = time()
     data = []
     target = []
+    header = []
     with open(location, 'rb') as f:
         reader = csv.reader(f)
         for i, row in enumerate(reader):
-            if i != 0:
+            if i == 0:
+                header = row
+            elif i != 0:
                 data.append(map(int, row))
-    print('loaded data from csv file')
+    print('loaded data from '+location)
     # data = data[1:]
 
     # data = np.array([np.array(xi) for xi in data]).astype(np.int)
@@ -73,4 +79,4 @@ def get_data(location):
 
     print 'This method took: '+str(t2 - t1)+' sec'
 
-    return data, target
+    return data, target, header
