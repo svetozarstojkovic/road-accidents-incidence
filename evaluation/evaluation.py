@@ -4,10 +4,10 @@ from sklearn.metrics import f1_score
 from sklearn.preprocessing import StandardScaler
 
 from dataset_process.data_io import get_test_data
-from global_variables import DatasetTypes
+from global_variables import get_transformed_dir
 
 
-def evaluate(method, method_name, scaled=False, dataset_location=DatasetTypes.TRANSFORMED_DIR.value):
+def evaluate(method, method_name, scaled=False, dataset_location=get_transformed_dir()):
 
     data, target = get_test_data(dataset_location)
 
@@ -22,9 +22,9 @@ def evaluate(method, method_name, scaled=False, dataset_location=DatasetTypes.TR
     print_f_measure(target, prediction)
 
 
-def evaluate_neural_network(network):
+def evaluate_neural_network(network, dataset_location=get_transformed_dir()):
 
-    data, target = get_test_data()
+    data, target = get_test_data(dataset_location)
 
     if data.dtype != float:
         data = StandardScaler().fit_transform(data)
@@ -41,7 +41,7 @@ def evaluate_neural_network(network):
     print_f_measure(target, prediction)
 
 
-def evaluate_sequential_nn(method, dataset_location=DatasetTypes.TRANSFORMED_DIR.value):
+def evaluate_sequential_nn(method, dataset_location=get_transformed_dir()):
 
     data, target = get_test_data(dataset_location)
 

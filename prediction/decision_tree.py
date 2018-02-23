@@ -3,11 +3,11 @@ from sklearn.preprocessing import StandardScaler
 
 from evaluation.evaluation import evaluate
 from dataset_process.data_io import get_train_data
-from global_variables import DatasetTypes
+from global_variables import get_transformed_dir
 
 method = tree.DecisionTreeClassifier()
 
-dataset_location = DatasetTypes.TRANSFORMED_DIR.value
+dataset_location = get_transformed_dir()
 
 data, target = get_train_data(dataset_location)
 

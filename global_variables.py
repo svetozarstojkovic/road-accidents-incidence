@@ -1,10 +1,17 @@
-import os
-from enum import Enum
 from os.path import dirname, abspath
 
 
-class DatasetTypes(Enum):
-    ORIGINAL_DIR = dirname(abspath(__file__)) + '/dataset/'
-    PCA_DIR = dirname(abspath(__file__)) + '/dataset/pca/'
-    K_BEST_DIR = dirname(abspath(__file__)) + '/dataset/k_best/'
-    TRANSFORMED_DIR = dirname(abspath(__file__)) + '/dataset/transformed/'
+def get_original_dir():
+    return dirname(abspath(__file__)) + '/dataset/'
+
+
+def get_pca_dir():
+    return dirname(abspath(__file__)) + '/dataset/pca/'
+
+
+def get_k_best_dir():
+    return dirname(abspath(__file__)) + '/dataset/k_best/'
+
+
+def get_transformed_dir():
+    return dirname(abspath(__file__)) + '/dataset/transformed/'

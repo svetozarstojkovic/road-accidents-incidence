@@ -10,13 +10,16 @@ from sklearn.preprocessing import StandardScaler
 
 from dataset_process.data_io import get_train_data, get_validation_data
 from evaluation.evaluation import evaluate_neural_network
+from global_variables import get_transformed_dir
 
 network_file = 'scaled_conjugate_gradient.pkl'
+
+dataset_location = get_transformed_dir()
 
 
 def initialize_network():
     # Train
-    data, target = get_train_data()
+    data, target = get_train_data(dataset_location)
 
     if data.dtype != float:
         data = StandardScaler().fit_transform(data)
@@ -28,7 +31,7 @@ def initialize_network():
         train.append(Instance(temp, [float(target[i])]))
 
     # Evaluation
-    data, target = get_validation_data()
+    data, target = get_validation_data(dataset_location)
 
     if data.dtype != float:
         data = StandardScaler().fit_transform(data, target)
@@ -80,4 +83,4 @@ else:
     network = initialize_network()
 
 
-evaluate_neural_network(network)
+evaluate_neural_network(network, dataset_location=dataset_location)

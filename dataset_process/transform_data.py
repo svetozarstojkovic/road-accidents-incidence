@@ -1,7 +1,8 @@
 import csv
 
 import numpy as np
-from sklearn.preprocessing import OneHotEncoder
+
+from global_variables import get_transformed_dir
 
 data = []
 print 'Starting to load dataset'
@@ -81,7 +82,7 @@ data = data.astype(np.int64)
 data = data.astype(np.str)
 
 print '5:6 - Conversion done'
-with open('../dataset/transformed/dataset.csv', 'w') as trans_file:
+with open(get_transformed_dir() + 'dataset.csv', 'w') as trans_file:
     trans_file.write(",".join(header))
     trans_file.write('\n')
     for index in range(len(data)):

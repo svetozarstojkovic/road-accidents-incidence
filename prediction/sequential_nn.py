@@ -7,9 +7,9 @@ from sklearn.preprocessing import StandardScaler
 
 from dataset_process.data_io import get_train_data, get_validation_data
 from evaluation.evaluation import evaluate_sequential_nn
-from global_variables import DatasetTypes
+from global_variables import get_transformed_dir
 
-dataset_location = DatasetTypes.TRANSFORMED_DIR.value
+dataset_location = get_transformed_dir()
 
 
 def learn_nn():

@@ -1,8 +1,7 @@
 from sklearn.model_selection import train_test_split
 
 from dataset_process.data_io import get_data
-
-from global_variables import DatasetTypes
+from global_variables import get_transformed_dir
 
 
 def divide_dataset(root_folder):
@@ -37,4 +36,4 @@ def divide_dataset(root_folder):
             test_file.write('\n')
 
 
-divide_dataset(DatasetTypes.PCA_DIR.value)
+divide_dataset(get_transformed_dir())

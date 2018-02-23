@@ -1,10 +1,8 @@
 from dataset_process.data_io import get_data
+from global_variables import get_transformed_dir
 
 
 # this script checks distribution of accident severity in train, validate and test
-from global_variables import DatasetTypes
-
-
 def view_severity_distribution(location='../dataset/transformed/dataset.csv'):
     data, target, header = get_data(location)
     values = {}
@@ -26,4 +24,4 @@ def print_distribution_for_train_validate_test(root_dir):
     view_severity_distribution(location=root_dir + 'test.csv')
 
 
-print_distribution_for_train_validate_test(DatasetTypes.TRANSFORMED_DIR.value)
+print_distribution_for_train_validate_test(get_transformed_dir())

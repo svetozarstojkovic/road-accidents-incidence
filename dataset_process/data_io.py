@@ -3,30 +3,30 @@ from time import time
 
 import numpy as np
 
-from global_variables import DatasetTypes
+from global_variables import get_transformed_dir, get_original_dir
 
 
 def get_original_dataset():
-    return get_data('../dataset/dataset.csv')
+    return get_data(get_original_dir() + 'dataset.csv')
 
 
-def get_train_data(root_dir=DatasetTypes.TRANSFORMED_DIR.value):
+def get_train_data(root_dir=get_transformed_dir()):
     data, target, header = get_data(root_dir + 'train.csv')
     return data, target
 
 
-def get_validation_data(root_dir=DatasetTypes.TRANSFORMED_DIR.value):
+def get_validation_data(root_dir=get_transformed_dir()):
     data, target, header = get_data(root_dir + 'validate.csv')
     return data, target
 
 
-def get_test_data(root_dir=DatasetTypes.TRANSFORMED_DIR.value):
+def get_test_data(root_dir=get_transformed_dir()):
     data, target, header = get_data(root_dir + 'test.csv')
     return data, target
 
 
 # returns data, target, header
-def get_data(location):
+def get_data(location=get_transformed_dir()):
     t1 = time()
     data = []
     target = []
