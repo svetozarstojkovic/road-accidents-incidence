@@ -81,11 +81,11 @@ data = data.astype(np.int64)
 data = data.astype(np.str)
 
 print '5:6 - Conversion done'
-with open('../dataset/dataset_transformed.csv', 'w') as trans_file:
+with open('../dataset/transformed/dataset.csv', 'w') as trans_file:
     trans_file.write(",".join(header))
     trans_file.write('\n')
     for index in range(len(data)):
         trans_file.write(",".join(data[index]))
         trans_file.write('\n')
 
-print '6:6 - Data written in dataset_transformed.csv file'
+print '6:6 - Data written in transformed/dataset.csv file'

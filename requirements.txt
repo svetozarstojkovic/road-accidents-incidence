@@ -1,4 +1,6 @@
+matplotlib
 keras
 scikit-learn
 nimblenet
 numpy
+h5py
